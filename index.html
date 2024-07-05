@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .wrapper {
+        width: 700px;
+        height: 650px;
+        border-radius: 50% !important;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid salmon;
+
+        display: none;
+
+
+
+    }
+
+    img {
+
+        animation: bounce 400ms infinite;
+        animation-delay: 2s;
+
+    }
+
+    .one {
+        width: 500px;
+        height: 500px;
+        top: 300px;
+        right: -180px;
+        filter: drop-shadow(-10px 10px blue);
+
+        z-index: 0;
+        position: absolute;
+        animation: bounce 300ms infinite;
+        scale: 0.3;
+        rotate: -20deg;
+
+
+
+    }
+
+    .two {
+        width: 500px;
+        height: 500px;
+        top: 300px;
+        left: -50px;
+        z-index: 1;
+        position: absolute;
+        animation: bounce 350ms infinite;
+
+
+
+
+    }
+
+    .two-s {
+        width: 500px;
+        height: 500px;
+        top: 300px;
+        left: -50px;
+        z-index: 0;
+        position: absolute;
+        /* filter: drop-shadow(10px -20px blue); */
+
+
+
+
+    }
+
+    .three {
+        width: 500px;
+        height: 500px;
+        top: 300px;
+        left: -180px;
+        animation-delay: 1s;
+        z-index: 0;
+        position: absolute;
+        filter: drop-shadow(10px 10px blue);
+        scale: 0.3;
+
+
+
+    }
+
+    .four {
+        width: 500px;
+        height: 500px;
+        top: 300px;
+        left: 250px;
+        z-index: 0;
+        position: absolute;
+
+
+    }
+
+    @media (max-width:500px) {
+        body {
+            background: blue;
+        }
+
+    }
+
+    @keyframes scale {
+        0% {
+            transform: scale(0.9);
+        }
+
+        50% {
+            transform: scale(0.4);
+        }
+
+        100% {
+            transform: scale(0.9);
+        }
+    }
+
+    @keyframes bgColorChange {
+        0% {
+            background: red;
+        }
+
+        25% {
+            background: blue;
+        }
+
+        50% {
+            background: green;
+        }
+
+        75% {
+            background: yellow;
+        }
+
+        100% {
+            background: red;
+        }
+    }
+
+    @keyframes bounce {
+        0% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(-20px);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        25% {
+            transform: rotate(15deg)
+        }
+
+        50% {
+            transform: rotate(0deg);
+        }
+
+        75% {
+            transform: rotate(-15deg);
+        }
+
+        100% {
+            transform: rotate(0deg);
+        }
+
+        /* 100% {
+            transform: rotate(-0deg);
+        } */
+
+
+    }
+
+    .btn {
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    @media (max-width: 768px) {
+        .wrapper {
+            width: 100vw !important;
+            height: 100vw;
+        }
+
+        .one {}
+
+
+    }
+</style>
+
+<body class="body">
+    <button class="btn" onclick="startAnimationAndMusic()">Play Music and Start Animation</button>
+    <div class="wrapper">
+        <img class="one" src="raccon-removebg-preview.png" alt="">
+        <img class="two" src="raccon-removebg-preview.png" alt=""><img class="two-s" src="raccon-removebg-preview.png"
+            alt="">
+        <img class="three" src="raccon-removebg-preview.png" alt="">
+        <img class="four" src="raccon-removebg-preview.png" alt="">
+        <!-- <img class="two" src="raccon.png" alt="">
+        <img class="three" src="raccon.png" alt=""> -->
+    </div>
+    <audio id="background-music" loop>
+        <source src="pedro_pedro_ringtone.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        function startAnimationAndMusic() {
+            var audio = document.getElementById("background-music");
+            audio.play();
+
+            // Display the wrapper and apply animations
+            var wrapper = document.querySelector('.wrapper');
+            wrapper.style.display = 'block';
+            wrapper.style.animation = 'spin 10s infinite, bgColorChange 1s infinite'; // Run spin and bgColorChange
+
+
+            // Hide the button after starting animations
+            document.querySelector('.btn').style.display = 'none';
+        }
+    </script>
+
+</html>
